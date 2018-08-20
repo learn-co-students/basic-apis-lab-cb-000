@@ -16,13 +16,14 @@ class RepositoriesController < ApplicationController
         {
           name: item['name'],
           owner: item['owner']['login'],
+          description: item['description'],
           url: item['html_url']
         }
-      end[0...20]
+      end
     else
       @error = body['message']
     end
-    binding.pry
+
     render 'search'
   end
 
