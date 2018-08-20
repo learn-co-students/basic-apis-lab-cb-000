@@ -11,10 +11,10 @@
     <ul>
       <% @repositories.each do |repo| %>
         <li>
-            <%= content_tag :h3, repo[:name] %>
-            <%= content_tag :p, repo[:owner] %>
-            <%= content_tag :p, repo[:description] %>
-            <p>Link: <%= link_to repo[:url], repo[:url] %></p>
+            <%= repo[:name] %><br>
+            <%= link_to repo[:url], repo[:url] %><br>
+            <%= repo[:owner] %><br>
+            <%= repo[:description] %><br>
         </li>
       <% end %>
     </ul>
