@@ -8,7 +8,6 @@
   <% if @results %>
   <ul>
     <% @results.each do |result| %>
-      <% binding.pry %>
       <li><%= result["name"] %><br>
           <%= link_to result["html_url"], result["html_url"] %><br>
           <%= result["description"] %>
