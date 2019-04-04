@@ -1,0 +1,9 @@
+<% @body["items"].each do |item| %>
+  <p>
+    <%= item["name"] + "," + item["full_name"] %>
+    <br></br>
+    <%= item["description"] %>
+    <br></br>
+    <a href='<%= "#{item["html_url"]}"%>'>link</a>
+</p>
+<% end %>
