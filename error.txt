@@ -1,0 +1,77 @@
+
+Searching Github
+  displays the right data (FAILED - 1)
+
+Failures:
+
+  1) Searching Github displays the right data
+     Failure/Error:
+       @resp = Faraday.get 'https://api.github.com/search/repositories' do |req|
+         req.params['client_id'] = '57c52ba3af1436288e9d'
+         req.params['client_secret'] = '6620a1071ba5ae6a4c9fbf908b472e9a119b9580'
+         req.params['q'] = params[:query]
+       end
+
+     WebMock::NetConnectNotAllowedError:
+       Real HTTP connections are disabled. Unregistered request: GET https://api.github.com/search/repositories?client_id=57c52ba3af1436288e9d&client_secret=6620a1071ba5ae6a4c9fbf908b472e9a119b9580&q with headers {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.15.4'}
+
+       You can stub this request with the following snippet:
+
+       stub_request(:get, "https://api.github.com/search/repositories?client_id=57c52ba3af1436288e9d&client_secret=6620a1071ba5ae6a4c9fbf908b472e9a119b9580&q").
+         with(
+           headers: {
+       	  'Accept'=>'*/*',
+       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       	  'User-Agent'=>'Faraday v0.15.4'
+           }).
+         to_return(status: 200, body: "", headers: {})
+
+       registered request stubs:
+
+       stub_request(:get, "https://api.github.com/search/repositories with query params hash_including({"q"=>"tetris"})")
+
+       ============================================================
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/webmock-3.5.1/lib/webmock/http_lib_adapters/net_http.rb:114:in `request'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/faraday-0.15.4/lib/faraday/adapter/net_http.rb:85:in `perform_request'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/faraday-0.15.4/lib/faraday/adapter/net_http.rb:43:in `block in call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/faraday-0.15.4/lib/faraday/adapter/net_http.rb:92:in `with_net_http_connection'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/faraday-0.15.4/lib/faraday/adapter/net_http.rb:38:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/faraday-0.15.4/lib/faraday/request/url_encoded.rb:15:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/faraday-0.15.4/lib/faraday/rack_builder.rb:143:in `build_response'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/faraday-0.15.4/lib/faraday/connection.rb:387:in `run_request'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/faraday-0.15.4/lib/faraday/connection.rb:138:in `get'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/faraday-0.15.4/lib/faraday.rb:103:in `method_missing'
+     # ./app/controllers/repositories_controller.rb:4:in `search'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/etag.rb:25:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/head.rb:12:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:232:in `context'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:226:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/railties-5.0.7.2/lib/rails/rack/logger.rb:36:in `call_app'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/railties-5.0.7.2/lib/rails/rack/logger.rb:24:in `block in call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/railties-5.0.7.2/lib/rails/rack/logger.rb:24:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/method_override.rb:22:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/railties-5.0.7.2/lib/rails/engine.rb:522:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:68:in `block in call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `each'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `call'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-test-0.6.3/lib/rack/mock_session.rb:30:in `request'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-test-0.6.3/lib/rack/test.rb:244:in `process_request'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/rack-test-0.6.3/lib/rack/test.rb:58:in `get'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/capybara-3.20.2/lib/capybara/rack_test/browser.rb:65:in `process'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/capybara-3.20.2/lib/capybara/rack_test/browser.rb:43:in `process_and_follow_redirects'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/capybara-3.20.2/lib/capybara/rack_test/browser.rb:23:in `visit'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/capybara-3.20.2/lib/capybara/rack_test/driver.rb:45:in `visit'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/capybara-3.20.2/lib/capybara/session.rb:277:in `visit'
+     # /usr/local/rvm/gems/ruby-2.6.1/gems/capybara-3.20.2/lib/capybara/dsl.rb:51:in `block (2 levels) in <module:DSL>'
+     # ./spec/features/github_search_spec.rb:8:in `block (2 levels) in <top (required)>'
+
+Finished in 0.025 seconds (files took 4.35 seconds to load)
+1 example, 1 failure
+
+Failed examples:
+
+rspec ./spec/features/github_search_spec.rb:5 # Searching Github displays the right data
+
